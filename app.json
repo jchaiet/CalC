@@ -1,0 +1,17 @@
+{
+  "name": "CalC",
+  "displayName": "CalC",
+  "expo": {
+    "name": "CalC",
+    "slug": "CalC",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
