@@ -18,6 +18,18 @@ const saveCredentialsFail = (error) => ({
   error
 })
 
+export const saveCredentials = (email, password) => async (dispatch) => {
+  dispatch(saveCredentialsStart())
+  try{
+    await Keychain.setGenericPassword(email, password)
+    dispatch(saveCredentialsSuccess(email))
+    console.log('added: ', email)
+  } catch (err){
+    console.log('Error saving credentials: ', err)
+    dispatch(saveCredentialsFail('Error saving credentials in keychain'))
+  }
+}
+
 const loginStart = () => ({
   type: c.LOGIN_START
 })
@@ -44,24 +56,10 @@ export const login = (email, password) => async (dispatch) => {
     return
   }
   try {
-    await Keychain.setGenericPassword(email, password)
+    await dispatch(saveCredentials(email, password))
     dispatch(loginSuccess(email))
-    Alert.alert(email, password)
   } catch (e){
     dispatch(loginFail('Error logging in'))
-    Alert.alert('Error saving credentials: ', e)
   }
   
-}
-
-export const saveCredentials = (email, password) => async (dispatch) => {
-  dispatch(saveCredentialsStart())
-  try{
-    await Keychain.setGenericPassword(email, password)
-    dispatch(saveCredentialsSuccess(email))
-  } catch (err){
-    console.log('Error saving credentials: ', err)
-    dispatch(saveCredentialsFail('Error saving credentials in keychain'))
-    Alert.alert(err)
-  }
 }
