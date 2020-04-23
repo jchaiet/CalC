@@ -1,12 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
-export default function App() {
+const Home = (props) => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>This is Home, {props.email}</Text>
+      <Button 
+        title="Log out" 
+        onPress={props.logout}
+      />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,3 +21,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Home;
