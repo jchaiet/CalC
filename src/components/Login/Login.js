@@ -15,23 +15,18 @@ const Login = (props) => {
                 { props.settingPasswordError && 
                   <Text>{props.settingPasswordError}</Text>
                 }
-                { !props.settingPasswordError && props.email.lengt > 0 && 
-                  <TouchableOpacity>
-                    <Text>Sign up</Text>
-                  </TouchableOpacity>
-                }
               </View>
               <View>
                 <TextInput 
                   style={styles.inputBox}
-                  onChangeText={props.setEmail}
+                  onChangeText={(val) => props.onChange('email', val)}
                   placeholder="Email"
                   autoCapitalize='none'
                 />
                 <TextInput
                   style={styles.inputBox}
                   secureTextEntry={true}
-                  onChangeText={props.setPassword}
+                  onChangeText={(val) => props.onChange('password', val)}
                   placeholder="Password"
                 />
               </View>

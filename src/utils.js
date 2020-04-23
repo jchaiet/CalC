@@ -4,7 +4,6 @@ import { NavigationActions, StackActions } from 'react-navigation'
 export const isSignedIn = async () => {
   try {
     const credentials = await Keychain.getGenericPassword()
-    console.log(credentials)
     if(credentials){
       return true
     }else{
@@ -27,7 +26,7 @@ export const logoutUser = async (navigation) => {
     });
     navigation.dispatch(resetAction)
     return true
-  }catch(err){
+  } catch(err){
     return false
   }
 }

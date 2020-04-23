@@ -3,8 +3,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import { Login } from './components/Login';
 import { Home } from './components/Home';
-
-import SignupContainer from './components/Signup/SignupContainer'
+import { Signup } from './components/Signup'
 
 const SignedInView = createStackNavigator(
   {
@@ -24,7 +23,7 @@ const SignedOutView = createStackNavigator(
       screen: Login
     },
     Signup: {
-      screen: SignupContainer
+      screen: Signup
     }
   },
   {

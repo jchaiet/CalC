@@ -2,7 +2,7 @@ import * as c from './constants'
 
 const initialState = {
   settingPassword: false,
-  email: '',
+  user: {},
   settingPasswordError: null,
   loggingIn: false,
   loginError: null
@@ -21,7 +21,7 @@ const actionHandlers = {
       ...state,
       settingPassword: false,
       settingPasswordError: null,
-      email: action.email,
+      user: action.user,
       loggingIn: false
     }
   },
@@ -32,6 +32,23 @@ const actionHandlers = {
       settingPasswordError: action.error,
       loggingIn: false,
       loginError: action.error
+    }
+  },
+  [c.GET_USER_START]: (state) => {
+    return {
+      ...state,
+    }
+  },
+  [c.GET_USER_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      user: action.user,
+    }
+  },
+  [c.GET_USER_FAIL]: (state, action) => {
+    return {
+      ...state,
+      getUserError: action.error
     }
   }
 }

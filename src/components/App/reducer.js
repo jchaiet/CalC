@@ -1,14 +1,21 @@
 import * as login from '../Login'
+import * as signup from '../Signup'
 
 const initialState = {
-  email: ''
+  user: {}
 }
 
 const actionHandlers = {
   [login.constants.LOGIN_SUCCESS]: (state, action) => {
     return {
       ...state,
-      email: action.email
+      user: action.user
+    }
+  },
+  [signup.constants.SIGNUP_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      user: action.user
     }
   }
 }

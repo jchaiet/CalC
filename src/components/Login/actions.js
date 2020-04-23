@@ -23,7 +23,6 @@ export const saveCredentials = (email, password) => async (dispatch) => {
   try{
     await Keychain.setGenericPassword(email, password)
     dispatch(saveCredentialsSuccess(email))
-    console.log('added: ', email)
   } catch (err){
     console.log('Error saving credentials: ', err)
     dispatch(saveCredentialsFail('Error saving credentials in keychain'))
@@ -34,10 +33,9 @@ const loginStart = () => ({
   type: c.LOGIN_START
 })
 
-const loginSuccess = (email) => ({
+const loginSuccess = (user) => ({
   type: c.LOGIN_SUCCESS,
-  email
-  //user
+  user
 })
 
 const loginFail = (error) => ({
@@ -56,10 +54,45 @@ export const login = (email, password) => async (dispatch) => {
     return
   }
   try {
+    const res = await Firebase.auth().signInWithEmailAndPassword(email, password)
     await dispatch(saveCredentials(email, password))
-    dispatch(loginSuccess(email))
+
+    const user = await db.collection('users')
+    .doc(res.user.uid)
+    .get()
+
+    dispatch(loginSuccess(user.data()))
+
   } catch (e){
     dispatch(loginFail('Error logging in'))
   }
-  
 }
+/*
+const getUserStart = () => ({
+  type: c.GET_USER_START
+})
+
+const getUserSuccess = (user) => ({
+  type: c.GET_USER_SUCCESS,
+  user
+})
+
+const getUserFail = (error) => ({
+  type: c.GET_USER_FAIL,
+  error
+})
+
+export const getUser = uid => async (dispatch) => {
+  dispatch(getUserStart())
+  try {
+    const user = await db.collection('users')
+    .doc(uid)
+    .get()
+
+    console.log(user.data())
+    
+    dispatch(getUserSuccess(user.data()))
+  } catch (e){
+    dispatch(getUserFail('Error getting user data'))
+  }
+}*/

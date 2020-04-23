@@ -2,6 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
 
+import {decode, encode} from 'base-64';
+
+if (!global.btoa) {  global.btoa = encode }
+
+if (!global.atob) { global.atob = decode } 
+
 import reduxStore from './store';
 import { isSignedIn } from './utils'
 
@@ -27,6 +33,7 @@ export default class App extends React.Component {
 
   render() {
     console.log(reduxStore.store.getState())
+    console.log(this.props)
 
     if(this.state.checkUserSignedIn){
       const Navigator = createAppNavigator(this.state.userSignedIn)

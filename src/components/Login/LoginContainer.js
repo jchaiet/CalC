@@ -29,16 +29,8 @@ class LoginContainer extends React.Component {
     }
   }
 
-  setEmail = (email) => {
-    this.setState({
-      email
-    })
-  }
-
-  setPassword = (password) => {
-    this.setState({
-      password
-    })
+  onChange = (name, value) => {
+		this.setState({ [name]: value });
   }
 
   handleNavToSignup = () => {
@@ -49,20 +41,19 @@ class LoginContainer extends React.Component {
     const emailFromState = this.state.email;
     const passwordFromState = this.state.password;
 
-    //this.props.loginActions.saveCredentials(emailFromState, passwordFromState)
     this.props.loginActions.login(emailFromState, passwordFromState)
     this.setState({
       email: '',
       password: ''
     })
   }
+  
   render(){
     return(
       <Login 
         {...this.props}
         handleNavToSignup={this.handleNavToSignup}
-        setEmail={this.setEmail}
-        setPassword={this.setPassword}
+        onChange={this.onChange}
         handleLogin={this.handleLogin}
       />
     )

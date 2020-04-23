@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 const Home = (props) => {
   return (
     <View style={styles.container}>
-      <Text>This is Home, {props.email}</Text>
+      <Text>This is Home, {props.user.first_name}</Text>
       <Button 
         title="Log out" 
         onPress={props.logout}
