@@ -5,17 +5,17 @@ import { Spinner } from 'native-base'
 const Login = (props) => {
   return (
     <View style={styles.container}>
-      { props.settingPassword ? 
+      { props.loggingIn ? 
         <Spinner />
       :
         <View>
           <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : "height"}>
             <View style={styles.container}>
-              <View>
-                { props.settingPasswordError && 
-                  <Text>{props.settingPasswordError}</Text>
-                }
-              </View>
+              { props.loginError && 
+                <View style={styles.errorContain}> 
+                  <Text style={styles.errorText}>{props.loginError}</Text>
+                </View>
+              }
               <View>
                 <TextInput 
                   style={styles.inputBox}
@@ -80,6 +80,20 @@ const styles = StyleSheet.create({
   },
   buttonSignup: {
     fontSize: 12
+  },
+  errorContain: {
+    backgroundColor: '#E04B4B',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  errorText: {
+    color: '#fff',
+    fontSize: 18
   }
 });
 

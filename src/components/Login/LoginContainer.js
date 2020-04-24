@@ -16,16 +16,9 @@ class LoginContainer extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(prevProps.loggingIn && !this.props.loggingIn){
-      const resetAction = StackActions.reset({
-        index: 0,
-        key: null,
-        actions: [
-          NavigationActions.navigate({ routeName: 'SignedIn' })
-        ]
-      })
-      this.props.navigation.dispatch(resetAction)
+  componentDidUpdate(prevProps) {
+    if(Object.keys(this.props.user).length > 0){
+      this.props.navigation.navigate({ routeName: 'SignedIn'})
     }
   }
 
@@ -40,12 +33,8 @@ class LoginContainer extends React.Component {
   handleLogin = () => {
     const emailFromState = this.state.email;
     const passwordFromState = this.state.password;
-
+    
     this.props.loginActions.login(emailFromState, passwordFromState)
-    this.setState({
-      email: '',
-      password: ''
-    })
   }
   
   render(){

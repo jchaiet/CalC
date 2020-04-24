@@ -55,16 +55,17 @@ export const login = (email, password) => async (dispatch) => {
   }
   try {
     const res = await Firebase.auth().signInWithEmailAndPassword(email, password)
-    await dispatch(saveCredentials(email, password))
+    if(res){
+      await dispatch(saveCredentials(email, password))
 
-    const user = await db.collection('users')
-    .doc(res.user.uid)
-    .get()
+      const user = await db.collection('users')
+      .doc(res.user.uid)
+      .get()
 
-    dispatch(loginSuccess(user.data()))
-
+      dispatch(loginSuccess(user.data()))
+    }
   } catch (e){
-    dispatch(loginFail('Error logging in'))
+    dispatch(loginFail('We could not find your account'))
   }
 }
 /*

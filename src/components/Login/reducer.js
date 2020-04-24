@@ -2,53 +2,55 @@ import * as c from './constants'
 
 const initialState = {
   settingPassword: false,
-  user: {},
   settingPasswordError: null,
   loggingIn: false,
-  loginError: null
+  loginError: null,
+  user: {},
+  email: ''
 }
 
 const actionHandlers = {
+  [c.SAVE_CREDENTIALS_START]: (state) => {
+    return {
+      ...state,
+      settingPassword: true
+    }
+  },
+  [c.SAVE_CREDENTIALS_SUCCESS]: (state, action) => {
+    return {
+      ...state,
+      settingPassword: false,
+      email: action.email,
+      settingPasswordError: null
+    }
+  },
+  [c.SAVE_CREDENTIALS_FAIL]: (state, action) => {
+    return {
+      ...state,
+      settingPassword: false,
+      settingPasswordError: action.error
+    }
+  },
   [c.LOGIN_START]: (state) => {
     return {
       ...state,
-      settingPassword: true,
-      loggingIn: true
+      loggingIn: true,
+      loginError: null
     }
   },
   [c.LOGIN_SUCCESS]: (state, action) => {
     return{
       ...state,
-      settingPassword: false,
-      settingPasswordError: null,
       user: action.user,
-      loggingIn: false
+      loggingIn: false,
+      loginError: null,
     }
   },
   [c.LOGIN_FAIL]: (state, action) => {
     return {
       ...state,
-      settingPassword: false,
-      settingPasswordError: action.error,
       loggingIn: false,
       loginError: action.error
-    }
-  },
-  [c.GET_USER_START]: (state) => {
-    return {
-      ...state,
-    }
-  },
-  [c.GET_USER_SUCCESS]: (state, action) => {
-    return{
-      ...state,
-      user: action.user,
-    }
-  },
-  [c.GET_USER_FAIL]: (state, action) => {
-    return {
-      ...state,
-      getUserError: action.error
     }
   }
 }

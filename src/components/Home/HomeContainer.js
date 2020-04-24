@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import Home from './Home';
+import * as homeActions from './actions'
+
 import { logoutUser } from '../../utils'
 
 class HomeContainer extends React.Component {
@@ -11,7 +14,8 @@ class HomeContainer extends React.Component {
   }
 
   logout = () => {
-    logoutUser(this.props.navigation)
+    this.props.homeActions.logout(this.props.navigation)
+    //logoutUser(this.props.navigation)
   }
 
   render(){
@@ -29,7 +33,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    homeActions: bindActionCreators(homeActions, dispatch)
+  }
 }
 
 const ConnectedHome = connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

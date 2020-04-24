@@ -1,11 +1,11 @@
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
 import { Login } from './components/Login';
 import { Home } from './components/Home';
 import { Signup } from './components/Signup'
 
-const SignedInView = createStackNavigator(
+const SignedInView = createSwitchNavigator(
   {
     Home: {
       screen: Home
@@ -17,7 +17,7 @@ const SignedInView = createStackNavigator(
   }
 )
 
-const SignedOutView = createStackNavigator(
+const SignedOutView = createSwitchNavigator(
   {
     Login: {
       screen: Login
@@ -33,7 +33,7 @@ const SignedOutView = createStackNavigator(
 )
 
 export const createAppNavigator = (signedIn = false) => {
-  const appStackNavigator = createStackNavigator(
+  const appSwitchNavigator = createSwitchNavigator(
     {
       SignedIn: {
         screen: SignedInView
@@ -47,5 +47,5 @@ export const createAppNavigator = (signedIn = false) => {
       headerMode: 'none'
     }
   )
-  return createAppContainer(appStackNavigator)
+  return createAppContainer(appSwitchNavigator)
 }

@@ -17,16 +17,11 @@ export const isSignedIn = async () => {
 export const logoutUser = async (navigation) => {
   try {
     await Keychain.resetGenericPassword()
-    const resetAction = StackActions.reset({
-      index: 0,
-      key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: 'SignedOut' })
-      ]
-    });
-    navigation.dispatch(resetAction)
+    navigation.navigate({ routeName: 'SignedOut'})
+    console.log('logged out')
     return true
   } catch(err){
+    alert(err)
     return false
   }
 }
