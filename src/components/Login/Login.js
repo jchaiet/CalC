@@ -22,6 +22,9 @@ const Login = (props) => {
                   onChangeText={(val) => props.onChange('email', val)}
                   placeholder="Email"
                   autoCapitalize='none'
+                  autoCompleteType='email'
+                  keyboardType='email-address'
+                  textContentType='emailAddress'
                 />
                 <TextInput
                   style={styles.inputBox}

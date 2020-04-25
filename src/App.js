@@ -32,8 +32,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(reduxStore.store.getState())
-
     if(this.state.checkUserSignedIn){
       const Navigator = createAppNavigator(this.state.userSignedIn)
       return (

@@ -2,7 +2,7 @@ import * as login from '../Login'
 import * as signup from '../Signup'
 
 const initialState = {
-  user: {}
+  user: {},
 }
 
 const actionHandlers = {

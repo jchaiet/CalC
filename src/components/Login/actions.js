@@ -65,7 +65,15 @@ export const login = (email, password) => async (dispatch) => {
       dispatch(loginSuccess(user.data()))
     }
   } catch (e){
-    dispatch(loginFail('We could not find your account'))
+    let error;
+    if(e.code === 'auth/wrong-password') {
+      error = 'The password you entered is incorrect'
+    }else if(e.code === 'auth/user-not-found') {
+      error = 'We could not find your account'
+    }else{
+      error = 'There was an error logging you in'
+    }
+    dispatch(loginFail(error))
   }
 }
 /*
