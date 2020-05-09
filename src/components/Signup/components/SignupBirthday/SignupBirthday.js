@@ -44,6 +44,7 @@ const SignupBirthday = (props) => {
                   maxLength={2}
                   ref={ref => birthdayMonthRef = ref}
                   returnKeyType="next"
+                  keyboardType="number-pad"
                   onSubmitEditing={() => birthdayDayRef.focus()}
                 />
                 <Text style={styles.dateSeparator}>/</Text>
@@ -63,6 +64,7 @@ const SignupBirthday = (props) => {
                   maxLength={2}
                   ref={ref => birthdayDayRef = ref}
                   returnKeyType="next"
+                  keyboardType="number-pad"
                   onSubmitEditing={() => birthdayYearRef.focus()}
                 />
                 <Text style={styles.dateSeparator}>/</Text>
@@ -76,6 +78,7 @@ const SignupBirthday = (props) => {
                   maxLength={4}
                   ref={ref => birthdayYearRef = ref}
                   returnKeyType="done"
+                  keyboardType="number-pad"
                   onSubmitEditing={props.handleSetBirthday}
                 />
               </View>

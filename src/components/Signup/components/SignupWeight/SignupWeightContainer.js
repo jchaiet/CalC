@@ -4,15 +4,12 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupBiometrics from './SignupBiometrics';
+import SignupWeight from './SignupWeight';
 
-class SignupBiometricsContainer extends React.Component {
+class SignupWeightContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      feet: '',
-      inches: '',
-      height: '',
       weight: '',
       focusedInput: null
     }
@@ -52,25 +49,21 @@ class SignupBiometricsContainer extends React.Component {
 		this.setState({ [name]: value });
   }
 
-  handleSetBiometrics = () => {
-    let feet = +this.state.feet;
-    let inches = +this.state.inches;
+  handleSetWeight = () => {
+    let weightFromState = +this.state.weight;
 
-    const heightFromState = (feet * 12) + inches;
-    const weightFromState = +this.state.weight;
-
-    this.props.signupActions.setBiometrics(heightFromState, weightFromState, this.props.navigation)
+    this.props.signupActions.setWeight(weightFromState, this.props.navigation)
   }
 
   render(){
     return(
-      <SignupBiometrics
+      <SignupWeight
         {...this.props}
         focusedInput={this.state.focusedInput}
         onChange={this.onChange}
         onFocusChange={(input) => this.onFocusChange(input)}
         onBlurChange={(input) => this.onBlurChange(input)}
-        handleSetBiometrics={this.handleSetBiometrics}
+        handleSetWeight={this.handleSetWeight}
       />
     )
   }
@@ -86,6 +79,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupBiometrics = connect(mapStateToProps, mapDispatchToProps)(SignupBiometricsContainer)
+const ConnectedSignupWeight = connect(mapStateToProps, mapDispatchToProps)(SignupWeightContainer)
 
-export { ConnectedSignupBiometrics as SignupBiometrics }
+export { ConnectedSignupWeight as SignupWeight }

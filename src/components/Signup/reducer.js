@@ -60,10 +60,16 @@ const actionHandlers = {
       signupError: null
     }
   },
-  [c.SIGNUP_BIOMETRICS_SUCCESS]: (state, action) => {
+  [c.SIGNUP_HEIGHT_SUCCESS]: (state, action) => {
     return{
       ...state,
       height: action.height,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_WEIGHT_SUCCESS]: (state, action) => {
+    return{
+      ...state,
       weight: action.weight,
       signupError: null
     }

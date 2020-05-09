@@ -12,7 +12,8 @@ import { SignupPassword } from './components/Signup/components/SignupPassword'
 import { SignupName } from './components/Signup/components/SignupName'
 import { SignupGender } from './components/Signup/components/SignupGender'
 import { SignupBirthday } from './components/Signup/components/SignupBirthday'
-import { SignupBiometrics } from './components/Signup/components/SignupBiometrics'
+import { SignupHeight } from './components/Signup/components/SignupHeight'
+import { SignupWeight } from './components/Signup/components/SignupWeight'
 import { SignupActivity } from './components/Signup/components/SignupActivity'
 import { SignupGoal } from './components/Signup/components/SignupGoal'
 
@@ -176,8 +177,27 @@ const SigningUpView = createStackNavigator(
         </TouchableOpacity>
       })
     },
-    SignupBiometrics: {
-      screen: SignupBiometrics,
+    SignupHeight: {
+      screen: SignupHeight,
+      navigationOptions: ({navigation}) => ({
+        title: '',
+        headerLeft: () => 
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+        >
+          <View style={{paddingHorizontal:20}}>
+            <Icon
+              active
+              type='Feather'
+              name='chevron-left'
+              size={24}
+            />
+          </View>
+        </TouchableOpacity>
+      })
+    },
+    SignupWeight: {
+      screen: SignupWeight,
       navigationOptions: ({navigation}) => ({
         title: '',
         headerLeft: () => 

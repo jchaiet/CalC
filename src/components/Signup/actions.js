@@ -137,33 +137,48 @@ export const setBirthday = (birthday, navigation) => async (dispatch) => {
   
   try {
     dispatch(signupBirthdaySuccess(birthday))
-    navigation.navigate({ routeName: 'SignupBiometrics' })
+    navigation.navigate({ routeName: 'SignupHeight' })
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
   }
 }
 
-const signupBiometricsSuccess = (height, weight) => ({
-  type: c.SIGNUP_BIOMETRICS_SUCCESS,
+const signupHeightSuccess = (height) => ({
+  type: c.SIGNUP_HEIGHT_SUCCESS,
   height,
-  weight
 })
 
-export const setBiometrics = (height, weight, navigation) => async (dispatch) => {
+export const setHeight = (height, navigation) => async (dispatch) => {
   dispatch(signupStart())
   if(height.length <= 0){
     dispatch(signupFail('Please enter your height'))
     return
   }
   
+  try {
+    dispatch(signupHeightSuccess(height))
+    navigation.navigate({ routeName: 'SignupWeight' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupWeightSuccess = (weight) => ({
+  type: c.SIGNUP_WEIGHT_SUCCESS,
+  weight,
+})
+
+export const setWeight = (weight, navigation) => async (dispatch) => {
+  dispatch(signupStart())
   if(weight.length <= 0){
     dispatch(signupFail('Please enter your weight'))
     return
   }
   
   try {
-    dispatch(signupBiometricsSuccess(height, weight))
+    dispatch(signupWeightSuccess(weight))
     navigation.navigate({ routeName: 'SignupActivity' })
   } catch (e){
     console.log(e)

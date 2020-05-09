@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { Picker } from '@react-native-community/picker';
+import { Picker } from 'react-native';
 
 import { styles } from '../../Signup.style';
 
