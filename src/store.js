@@ -3,13 +3,14 @@ import thunk from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
 import AsyncStorage from '@react-native-community/async-storage';
 
+import { reducer as WelcomeReducer } from './components/Welcome'
 import { reducer as LoginReducer } from './components/Login'
 import { reducer as SignupReducer } from './components/Signup'
 import { reducer as HomeReducer } from './components/Home'
 import { reducer as AppReducer } from './components/App'
 
-
 const appReducer = combineReducers({
+  Welcome: WelcomeReducer,
   Login: LoginReducer,
   Signup: SignupReducer,
   Home: HomeReducer,
@@ -17,11 +18,11 @@ const appReducer = combineReducers({
 })
 
 const rootReducer = (state, action) => {
-  if(action.type === 'USER_LOGOUT') {
+  if(action.type === 'USER_LOGOUT' || action.type === 'CLEAR') {
     persistConfig.storage.removeItem('persist:root')
     state = undefined
   }
-
+  
   return appReducer(state, action)
 }
 
@@ -30,7 +31,7 @@ middleware.push(thunk)
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage
+  storage: AsyncStorage,
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

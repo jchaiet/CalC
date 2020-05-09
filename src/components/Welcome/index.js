@@ -1,6 +1,6 @@
 import * as actions from './actions'
 import * as constants from './constants'
-import { SignupStart } from './SignupStartContainer'
+import { Welcome } from './WelcomeContainer'
 import reducer from './reducer'
 
-export { actions, constants, SignupStart, reducer }
+export { actions, constants, Welcome, reducer }

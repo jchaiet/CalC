@@ -3,7 +3,7 @@ import { NavigationActions, StackActions } from 'react-navigation'
 
 export const isSignedIn = async () => {
   try {
-    const credentials = await Keychain.getGenericPassword()
+    const credentials = await Keychain.getGenericPassword();
     if(credentials){
       return true
     }else{
@@ -18,7 +18,6 @@ export const logoutUser = async (navigation) => {
   try {
     await Keychain.resetGenericPassword()
     navigation.navigate({ routeName: 'SignedOut'})
-    console.log('logged out')
     return true
   } catch(err){
     alert(err)

@@ -19,6 +19,7 @@ class LoginContainer extends React.Component {
   componentDidUpdate(prevProps) {
     if(Object.keys(this.props.user).length > 0){
       this.props.navigation.navigate({ routeName: 'SignedIn'})
+      console.log('signed in')
     }
   }
 

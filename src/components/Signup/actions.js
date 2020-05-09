@@ -1,6 +1,7 @@
 import * as Keychain from 'react-native-keychain'
 import * as c from './constants'
 import Firebase, { db } from '../../../config/Firebase'
+import { NavigationActions } from 'react-navigation';
 
 import { Alert } from 'react-native';
 
@@ -29,6 +30,168 @@ export const saveCredentials = (user, password) => async (dispatch) => {
   }
 }
 
+const signupEmailSuccess = (email) => ({
+  type: c.SIGNUP_EMAIL_SUCCESS,
+  email
+})
+
+export const setEmail = (email, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(email.length <= 0){
+    dispatch(signupFail('Please enter your email'))
+    return
+  }
+  try {
+    dispatch(signupEmailSuccess(email))
+    navigation.navigate(
+      'SigningUpView',
+      {},
+      NavigationActions.navigate({ 
+        routeName: 'SignupPassword' 
+    }))
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupPasswordSuccess = (password) => ({
+  type: c.SIGNUP_PASSWORD_SUCCESS,
+  password
+})
+
+export const setPassword = (password, confirm_password, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(password.length <= 0){
+    dispatch(signupFail('Please enter a password'))
+    return
+  }
+  
+  if(password !== confirm_password){
+    dispatch(signupFail('The passwords you entered do not match'))
+    return
+  }
+
+  try {
+    dispatch(signupPasswordSuccess(password))
+    navigation.navigate({ routeName: 'SignupName' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupNameSuccess = (first_name, last_name) => ({
+  type: c.SIGNUP_NAME_SUCCESS,
+  first_name,
+  last_name
+})
+
+export const setName = (first_name, last_name, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(first_name.length <= 0){
+    dispatch(signupFail('Please enter your name'))
+    return
+  }
+  try {
+    dispatch(signupNameSuccess(first_name, last_name))
+    navigation.navigate({ routeName: 'SignupGender' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupGenderSuccess = (gender) => ({
+  type: c.SIGNUP_GENDER_SUCCESS,
+  gender
+})
+
+export const setGender = (gender, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(gender.length <= 0){
+    dispatch(signupFail('Please select your gender'))
+    return
+  }
+  
+  try {
+    dispatch(signupGenderSuccess(gender))
+    navigation.navigate({ routeName: 'SignupBirthday' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupBirthdaySuccess = (birthday) => ({
+  type: c.SIGNUP_BIRTHDAY_SUCCESS,
+  birthday
+})
+
+export const setBirthday = (birthday, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(birthday.length <= 0){
+    dispatch(signupFail('Please enter your birthday'))
+    return
+  }
+  
+  try {
+    dispatch(signupBirthdaySuccess(birthday))
+    navigation.navigate({ routeName: 'SignupBiometrics' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupBiometricsSuccess = (height, weight) => ({
+  type: c.SIGNUP_BIOMETRICS_SUCCESS,
+  height,
+  weight
+})
+
+export const setBiometrics = (height, weight, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(height.length <= 0){
+    dispatch(signupFail('Please enter your height'))
+    return
+  }
+  
+  if(weight.length <= 0){
+    dispatch(signupFail('Please enter your weight'))
+    return
+  }
+  
+  try {
+    dispatch(signupBiometricsSuccess(height, weight))
+    navigation.navigate({ routeName: 'SignupActivity' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
+const signupActivitySuccess = (activity) => ({
+  type: c.SIGNUP_ACTIVITY_SUCCESS,
+  activity
+})
+
+export const setActivity = (activity, navigation) => async (dispatch) => {
+  dispatch(signupStart())
+  if(activity.length <= 0){
+    dispatch(signupFail('Please enter your activity level'))
+    return
+  }
+
+  try {
+    dispatch(signupActivitySuccess(activity))
+    navigation.navigate({ routeName: 'SignupGoal' })
+  } catch (e){
+    console.log(e)
+    dispatch(signupFail('Error signing up'))
+  }
+}
+
 const signupStart = () => ({
   type: c.SIGNUP_START
 })
@@ -43,37 +206,40 @@ const signupFail = (error) => ({
   error
 })
 
-export const signup = (first_name, last_name, email, password, confirmPassword) => async (dispatch)=> {
+export const completeSignup = (email, first_name, last_name, password, gender, birthday, height, weight, activity, bmr, goal, navigation) => async (dispatch) => {
   dispatch(signupStart())
-  if(email.length <= 0){
-    dispatch(signupFail('Please enter your email'))
+  if(goal.length <= 0){
+    dispatch(signupFail('Please select your goal'))
     return
   }
-  if(password.length <= 0){
-    dispatch(signupFail('Please enter your password'))
-    return
-  }
-  if(password !== confirmPassword){
-    dispatch(signupFail('Your passwords do not match'))
-  }
+
   try {
     const res = await Firebase.auth().createUserWithEmailAndPassword(email, password)
     if(res){
       const user = {
-        first_name: first_name,
-        last_name: last_name,
+        first_name,
+        last_name,
         uid: res.user.uid,
-        email: email
+        email,
+        gender,
+        birthday,
+        height,
+        weight,
+        activity,
+        bmr,
+        goal
       }
 
       db.collection('users')
       .doc(user.uid)
       .set(user)
 
-      await dispatch(saveCredentials(user.email, password))
-      dispatch(signupSuccess(user))
+      await dispatch(saveCredentials(user.email, password));
+      dispatch(signupSuccess(user));
+      navigation.navigate({ routeName: 'SignedIn'})
     }
   } catch (e){
+    console.log(e)
     dispatch(signupFail('Error signing up'))
   }
 }

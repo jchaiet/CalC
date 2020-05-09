@@ -3,18 +3,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
-import * as signupActions from './actions'
-import Signup from './Signup';
+import * as signupActions from '../../actions'
+import SignupName from './SignupName';
 
-class SignupContainer extends React.Component {
+class SignupNameContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       first_name: '',
       last_name: '',
-      email: '',
-      password: '',
-      confirm_password: ''
+      focusedInput: null
     }
   }
 
@@ -31,33 +29,48 @@ class SignupContainer extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({ 
+      first_name: this.props.first_name,
+      last_name: this.props.last_name
+    })
+  }
+
+  onFocusChange = (input) => {
+    this.setState({
+      focusedInput: input
+    })
+  }
+
+  onBlurChange = (input) => {
+    this.setState(state => {
+      if(state.focusedInput === input) {
+        return { focusedInput: null }
+      }
+      return null
+    })
+  }
+
   onChange = (name, value) => {
 		this.setState({ [name]: value });
   }
 
-  handleSignup = () => {
+  handleSetName = () => {
     const firstNameFromState = this.state.first_name;
     const lastNameFromState = this.state.last_name;
-    const emailFromState = this.state.email;
-    const passwordFromState = this.state.password;
-    const confirmPasswordFromState = this.state.confirm_password;
 
-    this.props.signupActions.signup(firstNameFromState, lastNameFromState, emailFromState, passwordFromState, confirmPasswordFromState)
-    this.setState({
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      confirm_password: ''
-    })    
+    this.props.signupActions.setName(firstNameFromState, lastNameFromState, this.props.navigation) 
   }
 
   render(){
     return(
-      <Signup 
+      <SignupName
         {...this.props}
+        focusedInput={this.state.focusedInput}
         onChange={this.onChange}
-        handleSignup={this.handleSignup}
+        onFocusChange={(input) => this.onFocusChange(input)}
+        onBlurChange={(input) => this.onBlurChange(input)}
+        handleSetName={this.handleSetName}
       />
     )
   }
@@ -73,6 +86,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignup = connect(mapStateToProps, mapDispatchToProps)(SignupContainer)
+const ConnectedSignupName = connect(mapStateToProps, mapDispatchToProps)(SignupNameContainer)
 
-export { ConnectedSignup as Signup }
+export { ConnectedSignupName as SignupName }

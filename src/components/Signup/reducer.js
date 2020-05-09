@@ -2,10 +2,18 @@ import * as c from './constants'
 
 const initialState = {
   settingPassword: false,
-  settingPasswordError: null,
   signingUp: false,
+  user: {},
+  email: '',
+  first_name: '',
+  last_name: '',
+  birthday: '',
+  gender: undefined,
+  height: '',
+  weight: '',
+  activity: '',
+  goal: '',
   signupError: null,
-  user: {}
 }
 
 const actionHandlers = {
@@ -14,6 +22,64 @@ const actionHandlers = {
       ...state,
       settingPassword: true,
       signingUp: true
+    }
+  },
+  [c.SIGNUP_EMAIL_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      email: action.email,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_PASSWORD_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      password: action.password,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_NAME_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      first_name: action.first_name,
+      last_name: action.last_name,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_GENDER_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      gender: action.gender,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_BIRTHDAY_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      birthday: action.birthday,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_BIOMETRICS_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      height: action.height,
+      weight: action.weight,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_ACTIVITY_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      activity: action.activity,
+      signupError: null
+    }
+  },
+  [c.SIGNUP_GOAL_SUCCESS]: (state, action) => {
+    return{
+      ...state,
+      goal: action.goal,
+      signupError: null
     }
   },
   [c.SIGNUP_SUCCESS]: (state, action) => {
@@ -29,9 +95,7 @@ const actionHandlers = {
     return {
       ...state,
       settingPassword: false,
-      settingPasswordError: action.error,
-      signingUp: false,
-      loginError: action.error
+      signupError: action.error,
     }
   }
 }
