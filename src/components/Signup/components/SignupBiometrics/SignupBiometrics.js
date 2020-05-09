@@ -24,7 +24,7 @@ const SignupBiometrics = (props) => {
             }
           </View>
 
-          <View>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
             <View style={{ marginBottom: 25 }}>
               <Text style={styles.subHeaderText}>Height</Text>
               <View style={styles.bioContain}>
@@ -80,7 +80,7 @@ const SignupBiometrics = (props) => {
 
         </View>
 
-        <View style={{ flex: 1, justifyContent:'flex-end', alignItems: 'center' }} >
+        <View>
           <TouchableOpacity style={styles.button} onPress={props.handleSetBiometrics}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>

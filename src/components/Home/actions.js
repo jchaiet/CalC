@@ -1,5 +1,5 @@
 import { NavigationActions, StackActions } from 'react-navigation'
-import * as Keychain from 'react-native-keychain'
+import * as Keychain from 'react-native'
 import * as c from './constants'
 import Firebase, { db } from '../../../config/Firebase'
 

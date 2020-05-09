@@ -25,20 +25,21 @@ const SignupGender = (props) => {
             }
           </View>
 
-          <Picker
-            selectedValue={props.gender}
-            value={props.gender}
-            onValueChange={val => props.onChange('gender', val)}
-            style={{ width: 325 }}
-          >
-            <Picker.Item label="Female" value="female" />
-            <Picker.Item label="Male" value="male" />
-
-          </Picker>
-          
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Picker
+              selectedValue={props.gender}
+              value={props.gender}
+              onValueChange={val => props.onChange('gender', val)}
+              style={{ width: 325 }}
+            >
+              <Picker.Item label="Please select one" value="" />
+              <Picker.Item label="Female" value="female" />
+              <Picker.Item label="Male" value="male" />
+            </Picker>
+          </View>
         </View>
 
-        <View style={{ flex: 1, justifyContent:'flex-end', alignItems: 'center' }} >
+        <View>
           <TouchableOpacity style={styles.button} onPress={props.handleSetGender}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>

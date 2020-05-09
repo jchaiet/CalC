@@ -25,7 +25,7 @@ const SignupPassword = (props) => {
             }
           </View>
 
-          <View>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
             <TextInput 
               style={(props.focusedInput === 'password') ? styles.inputBoxFocused : styles.inputBox}
               onChangeText={(val) => props.onChange('password', val)}
@@ -56,7 +56,7 @@ const SignupPassword = (props) => {
           </View>
         </View>
 
-        <View style={{ flex: 1, justifyContent:'flex-end', alignItems: 'center' }} >
+        <View>
           <TouchableOpacity style={styles.button} onPress={props.handleSetPassword}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>

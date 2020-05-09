@@ -24,23 +24,25 @@ const SignupStart = (props) => {
             }
           </View>
 
-          <TextInput 
-            ref={ref => input = ref}
-            style={(props.isFocused) ? styles.inputBoxFocused : styles.inputBox}
-            onChangeText={(val) => props.onChange('email', val)}
-            placeholder="Email"
-            placeholderTextColor="#808080"
-            autoCapitalize='none'
-            autoFocus={true}
-            onFocus={props.onFocusChange}
-            onBlur={props.onBlurChange}
-            onSubmitEditing={props.handleSetEmail}
-            returnKeyType="go"
-            defaultValue={props.email}
-          />
+          < View style={{ flex: 1, justifyContent: 'center' }}>
+            <TextInput 
+              ref={ref => input = ref}
+              style={(props.isFocused) ? styles.inputBoxFocused : styles.inputBox}
+              onChangeText={(val) => props.onChange('email', val)}
+              placeholder="Email"
+              placeholderTextColor="#808080"
+              autoCapitalize='none'
+              autoFocus={true}
+              onFocus={props.onFocusChange}
+              onBlur={props.onBlurChange}
+              onSubmitEditing={props.handleSetEmail}
+              returnKeyType="go"
+              defaultValue={props.email}
+            />
+          </View>
         </View>
 
-        <View style={{ flex: 1, justifyContent:'flex-end', alignItems: 'center' }} >
+        <View>
           <TouchableOpacity style={styles.button} onPress={props.handleSetEmail}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>

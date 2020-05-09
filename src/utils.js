@@ -1,4 +1,4 @@
-import * as Keychain from 'react-native-keychain'
+import * as Keychain from 'react-native'
 import { NavigationActions, StackActions } from 'react-navigation'
 
 export const isSignedIn = async () => {

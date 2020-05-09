@@ -24,7 +24,7 @@ const SignupName = (props) => {
             }
           </View>
 
-          <View>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
             <TextInput 
               style={(props.focusedInput === 'first') ? styles.inputBoxFocused : styles.inputBox}
               onChangeText={(val) => props.onChange('first_name', val)}
@@ -53,7 +53,7 @@ const SignupName = (props) => {
           </View>  
         </View>
 
-        <View style={{ flex: 1, justifyContent:'flex-end', alignItems: 'center' }} >       
+        <View>          
           <TouchableOpacity style={styles.button} onPress={props.handleSetName}>
             <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>

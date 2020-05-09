@@ -148,6 +148,11 @@ const styles = StyleSheet.create({
   placeholder: {
     color: '#454545'
   },
+  buttonContain: { 
+    flex: 1, 
+    justifyContent:'flex-end', 
+    alignItems: 'center' 
+  },
   button: {
     marginTop: 30,
     paddingVertical: 10,
