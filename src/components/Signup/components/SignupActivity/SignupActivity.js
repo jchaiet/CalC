@@ -3,11 +3,14 @@ import { View, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from 're
 import { SafeAreaView } from 'react-navigation';
 import { Picker } from 'react-native';
 
+import { CButton } from '../../../shared'
+
 import { styles } from '../../Signup.style';
+import { colors, fonts } from '../../../../styles/styles'
 
 const SignupActivity = (props) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={{ flex: 1, justifyContent:'space-between', alignItems: 'center', marginTop: 20 }}>
 
         <View>
@@ -25,7 +28,8 @@ const SignupActivity = (props) => {
             selectedValue={props.activity}
             value={props.activity}
             onValueChange={val => props.onChange('activity', val)}
-            style={{ width: 325 }}
+            style={styles.picker}
+            itemStyle={styles.pickerText}
           >
             <Picker.Item label="Please select one" value="" />
             <Picker.Item label="Not active at all" value={1.2} />
@@ -38,12 +42,13 @@ const SignupActivity = (props) => {
       </View>
 
       <View>
-        <TouchableOpacity style={styles.button} onPress={props.handleSetActivity}>
-          <Text style={styles.buttonText}>Continue</Text>
-        </TouchableOpacity>
+        <CButton
+          text="Next: Goal"
+          action={props.handleSetActivity}
+          color={colors.blue}
+        />
       </View>
-
-    </SafeAreaView>
+    </View>
   )
 }
 

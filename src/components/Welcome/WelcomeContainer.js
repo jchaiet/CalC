@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as Keychain from 'react-native'
+import * as Keychain from 'react-native-keychain'
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as welcomeActions from './actions'
 

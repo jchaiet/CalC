@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react'
+import { SafeAreaView } from 'react-navigation';
 
 import {decode, encode} from 'base-64';
 
@@ -37,7 +38,9 @@ export default class App extends React.Component {
       return (
         <Provider store={reduxStore.store}>
           <PersistGate loading={<Spinner />} persistor={reduxStore.persistor}>
-            <Navigator />
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+              <Navigator />
+            </SafeAreaView>
           </PersistGate>
         </Provider>
       )

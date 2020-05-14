@@ -1,4 +1,4 @@
-import * as Keychain from 'react-native'
+import * as Keychain from 'react-native-keychain'
 import * as c from './constants'
 import Firebase, { db } from '../../../config/Firebase'
 

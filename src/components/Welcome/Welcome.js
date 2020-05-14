@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, TextInput, TouchableOpacity, Text, KeyboardAvoidingView, StyleSheet, Platform, Button } from 'react-native';
-import { Spinner } from 'native-base'
+
+import { CButton } from '../shared'
+
+import { colors, fonts } from '../../styles/styles'
 
 const Welcome = (props) => {
   return (
@@ -9,9 +12,12 @@ const Welcome = (props) => {
         <Text style={styles.titleText}>Welcome to CalC</Text>
         <Text style={styles.bodyText}>Start setting your diet goals</Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={props.handleNavToSignup}>
-        <Text style={styles.buttonText}>Sign up</Text>
-      </TouchableOpacity>
+
+      <CButton
+        text="Sign up"
+        action={props.handleNavToSignup}
+        color={colors.blue}
+      />
 
       <TouchableOpacity style={styles.buttonLogin} onPress={props.handleNavToLogin}>
         <Text style={styles.buttonLoginText}>Log in</Text>
@@ -23,48 +29,52 @@ const Welcome = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingBottom: 25
   },
   innerContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   },
   titleText: {
     fontSize: 24,
-    fontWeight: 'bold',
     letterSpacing: 1,
-    marginBottom: 10
+    marginBottom: 5,
+    fontFamily: fonts.barlowSemi
   },
   bodyText: {
-    fontSize: 14
+    fontSize: 16,
+    fontFamily: fonts.barlowReg
   },
   button: {
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 15,
     paddingVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#4BB2E0',
-    borderColor: '#4BB2E0',
+    backgroundColor: colors.blue,
+    borderColor: colors.blue,
     borderWidth: 1,
     borderRadius: 5,
     width: 325,
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 20
+    color: colors.white,
+    fontSize: 20,
+    fontFamily: fonts.barlowMed
   },
+  buttonLogin: {
+    marginTop: 15,
+  },  
   buttonLoginText: {
     fontSize: 20,
-    color: '#4BB2E0',
-    marginBottom: 25
+    color: colors.blue,
+    fontFamily: fonts.barlowMed
   },
   errorContain: {
-    backgroundColor: '#E04B4B',
+    backgroundColor: colors.red,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
@@ -74,7 +84,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   errorText: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 18
   }
 });

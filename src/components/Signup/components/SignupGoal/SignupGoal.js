@@ -2,11 +2,14 @@ import React from 'react';
 import { View, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 
+import { CButton } from '../../../shared'
+
 import { styles } from '../../Signup.style';
+import { colors, fonts } from '../../../../styles/styles'
 
 const SignupGoal = (props) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={{ flex: 1, justifyContent:'center', alignItems: 'center', marginTop: 20 }}>
 
         <View>
@@ -55,12 +58,13 @@ const SignupGoal = (props) => {
       </View>
 
       <View>
-        <TouchableOpacity style={styles.buttonComplete} onPress={props.handleCompleteSignup}>
-          <Text style={styles.buttonText}>Start Tracking</Text>
-        </TouchableOpacity>
+        <CButton
+          text="Start Tracking"
+          action={props.handleCompleteSignup}
+          color={colors.green}
+        />
       </View>
-
-    </SafeAreaView>
+    </View>
   )
 }
 

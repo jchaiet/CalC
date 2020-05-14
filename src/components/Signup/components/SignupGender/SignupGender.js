@@ -3,48 +3,52 @@ import { View, TouchableOpacity, Text, KeyboardAvoidingView, Platform } from 're
 import { SafeAreaView } from 'react-navigation';
 import { Picker } from 'react-native';
 
+import { CButton } from '../../../shared'
+
 import { styles } from '../../Signup.style';
+import { colors, fonts } from '../../../../styles/styles'
 
 const SignupGender = (props) => {
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? "padding" : "height"} 
-      style={{ flex: 1 }}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 70 : 0} 
+      style={styles.container}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 110 : 0} 
     >
-      <SafeAreaView style={styles.container}>
-        <View style={{ flex: 1, justifyContent:'space-between', alignItems: 'center', marginTop: 20 }}>
-
-          <View>
-            <Text style={styles.headerText}>What's your gender?</Text>
-          </View>
-
-          <View style={styles.errorContain}>
-            { props.signupError && 
-              <Text style={styles.errorText}>{props.signupError}</Text>
-            }
-          </View>
-
-          <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Picker
-              selectedValue={props.gender}
-              value={props.gender}
-              onValueChange={val => props.onChange('gender', val)}
-              style={{ width: 325 }}
-            >
-              <Picker.Item label="Please select one" value="" />
-              <Picker.Item label="Female" value="female" />
-              <Picker.Item label="Male" value="male" />
-            </Picker>
-          </View>
-        </View>
+      <View style={{ flex: 1, justifyContent:'space-between', alignItems: 'center', marginTop: 20 }}>
 
         <View>
-          <TouchableOpacity style={styles.button} onPress={props.handleSetGender}>
-            <Text style={styles.buttonText}>Continue</Text>
-          </TouchableOpacity>
+          <Text style={styles.headerText}>What's your gender?</Text>
         </View>
-      </SafeAreaView>
+
+        <View style={styles.errorContain}>
+          { props.signupError && 
+            <Text style={styles.errorText}>{props.signupError}</Text>
+          }
+        </View>
+
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <Picker
+            selectedValue={props.gender}
+            value={props.gender}
+            onValueChange={val => props.onChange('gender', val)}
+            style={styles.picker}
+            itemStyle={styles.pickerText}
+          >
+            <Picker.Item label="Please select one" value="" />
+            <Picker.Item label="Female" value="female" />
+            <Picker.Item label="Male" value="male" />
+          </Picker>
+        </View>
+      </View>
+
+      <View>
+        <CButton
+          text="Next: Birthday"
+          action={props.handleSetGender}
+          color={colors.blue}
+        />
+      </View>
     </KeyboardAvoidingView>
   )
 }

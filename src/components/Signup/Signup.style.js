@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+import { mainStyles, colors, fonts } from '../../styles/styles'
+
 const pickerStyles = StyleSheet.create({
   inputIOS: {
     borderWidth: 1,
-    borderColor: '#ebebeb',
-    backgroundColor: '#ebebeb',
+    borderColor: colors.lightGrey,
+    backgroundColor: colors.lightGrey,
     borderRadius: 5,
-    color: '#000',
+    color: colors.black,
     paddingRight: 30,
     width: 325,
     margin: 10,
@@ -19,25 +21,25 @@ const pickerStyles = StyleSheet.create({
     right: 15
   },
   placeholder: {
-    color: '#454545'
+    color: colors.lightGrey
   }
 })
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 15
   },
   errorContain: {
     paddingVertical: 10,
   },
   errorText: {
     fontSize: 20,
-    color: '#E04B4B'
+    color: colors.red,
+    fontFamily: fonts.barlowLight
   },  
   headerContain: {
     display: 'flex',
@@ -48,21 +50,22 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 21,
-    fontWeight: 'bold'
+    fontFamily: fonts.barlowMed
   },
   subText: {
     fontSize: 18,
-    color: '#454545',
-    textAlign: 'center'
+    color: colors.darkGrey,
+    textAlign: 'center',
+    fontFamily: fonts.barlowLight
   },
   heightContain: {
     marginTop: 25,
     marginBottom: 50
   },  
   subHeaderText: {
-    color: '#E04B4B',
+    color: colors.darkGrey,
     letterSpacing: 1,
-    fontWeight: 'bold',
+    fontFamily: fonts.barlowMed,
     fontSize: 20,
     paddingRight: 10,
     marginBottom: 5
@@ -78,8 +81,8 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#ebebeb',
-    backgroundColor: '#ebebeb',
+    borderColor: colors.lightGrey,
+    backgroundColor: colors.lightGrey,
     textAlign: 'left',
     marginRight: 10
   },
@@ -89,14 +92,15 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#ebebeb',
+    borderColor: colors.lightGrey,
     backgroundColor: '#fff',
     textAlign: 'left',
     marginRight: 10
   },
   bioText: {
     fontSize: 16,
-    color: '#454545',
+    color: colors.darkGrey,
+    fontFamily: fonts.barlowLight
   },  
   inputBox: {
     width: 325,
@@ -104,9 +108,10 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#ebebeb',
-    backgroundColor: '#ebebeb',
-    textAlign: 'left'
+    borderColor: colors.lightGrey,
+    backgroundColor: colors.lightGrey,
+    textAlign: 'left',
+    fontFamily: fonts.barlowLight
   },
   inputBoxFocused: {
     width: 325,
@@ -114,9 +119,10 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#ebebeb',
-    backgroundColor: '#fff',
-    textAlign: 'left'
+    borderColor: colors.lightGrey,
+    backgroundColor: colors.white,
+    textAlign: 'left',
+    fontFamily: fonts.barlowLight
   },
   dateInputBoxMD: {
     width: 35,
@@ -146,7 +152,7 @@ const styles = StyleSheet.create({
     fontSize: 18
   }, 
   placeholder: {
-    color: '#454545'
+    color: colors.darkGrey
   },
   buttonContain: { 
     flex: 1, 
@@ -157,46 +163,48 @@ const styles = StyleSheet.create({
     marginTop: 30,
     paddingVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#4BB2E0',
-    borderColor: '#4BB2E0',
+    backgroundColor: colors.blue,
+    borderColor: colors.blue,
     borderWidth: 1,
     borderRadius: 5,
-    width: 325
+    width: 325,
   },
   buttonComplete: {
     marginTop: 30,
     paddingVertical: 10,
     alignItems: 'center',
-    backgroundColor: '#4BE051',
-    borderColor: '#4BE051',
+    backgroundColor: colors.green,
+    borderColor: colors.green,
     borderWidth: 1,
     borderRadius: 5,
     width: 325
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 20
+    color: colors.white,
+    fontSize: 20,
+    fontFamily: fonts.barlowMed
   },
   buttonSignup: {
     fontSize: 12
   },
   selectedGoalHeading: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 5
+    fontFamily: fonts.barlowMed,
   },
   selectedGoalText: {
     color: '#fff',
-    fontSize: 24,
-    paddingVertical: 5
+    fontSize: 30,
+    paddingVertical: 10,
+    fontFamily: fonts.barlowBold
   },
   selectedGoalSubtext: {
     color: '#fff',
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: fonts.barlowLight
   },
   selectedGoal: {
-    backgroundColor: '#4BB2E0',
+    backgroundColor: colors.red,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -208,18 +216,19 @@ const styles = StyleSheet.create({
   },
   unselectedGoalHeading: {
     fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 5
+    fontFamily: fonts.barlowMed,
   },
   unselectedGoalText: {
-    fontSize: 24,
-    paddingVertical: 5
+    fontSize: 30,
+    fontFamily: fonts.barlowBold,
+    paddingVertical: 10,
   },
   unselectedGoalSubtext: {
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: fonts.barlowLight,
   },
   unselectedGoal: {
-    backgroundColor: '#EBEBEB',
+    backgroundColor: colors.lightGrey,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -228,6 +237,12 @@ const styles = StyleSheet.create({
     width: 325,
     marginVertical: 15,
     borderRadius: 3
+  },
+  picker: {
+    width: 325
+  },
+  pickerText: {
+    fontFamily: fonts.barlowReg,
   }
 });
 

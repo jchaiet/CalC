@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as Keychain from 'react-native'
+import * as Keychain from 'react-native-keychain'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as loginActions from './actions'
@@ -12,7 +12,8 @@ class LoginContainer extends React.Component {
     super(props)
     this.state = {
       email: '',
-      password: '' 
+      password: '',
+      focusedInput: null
     }
   }
 
@@ -27,8 +28,24 @@ class LoginContainer extends React.Component {
 		this.setState({ [name]: value });
   }
 
-  handleNavToSignup = () => {
-    this.props.navigation.navigate('Signup')
+  onFocusChange = (input) => {
+    this.setState({
+      focusedInput: input
+    })
+  }
+
+  onBlurChange = (input) => {
+    this.setState(state => {
+      if(state.focusedInput === input) {
+        return { focusedInput: null }
+      }
+      return null
+    })
+    //this.setState({ isFocused: false })
+  }
+
+  handleNavToForgotPassword = () => {
+    //this.props.navigation.navigate('Signup')
   }
 
   handleLogin = () => {
@@ -36,14 +53,20 @@ class LoginContainer extends React.Component {
     const passwordFromState = this.state.password;
     
     this.props.loginActions.login(emailFromState, passwordFromState)
+    this.setState({
+      password: ''
+    })
   }
   
   render(){
     return(
       <Login 
         {...this.props}
-        handleNavToSignup={this.handleNavToSignup}
+        focusedInput={this.state.focusedInput}
+        handleNavToForgotPassword={this.handleNavToForgotPassword}
         onChange={this.onChange}
+        onFocusChange={(input) => this.onFocusChange(input)}
+        onBlurChange={(input) => this.onBlurChange(input)}
         handleLogin={this.handleLogin}
       />
     )
