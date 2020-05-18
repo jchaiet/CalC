@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupGoal from './SignupGoal';
+import SignUpGoal from './SignUpGoal';
 
-class SignupGoalContainer extends React.Component {
+class SignUpGoalContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -80,13 +80,13 @@ class SignupGoalContainer extends React.Component {
     return Math.floor(BMR)
   }
 
-  handleCompleteSignup = () => {
+  handleCompleteSignUp = () => {
     const { email, first_name, last_name, gender, birthday, height, weight, activity, bmr, goal } = this.state;
 
     const password = this.props.password;
     const dataFromState = this.state;
 
-    this.props.signupActions.completeSignup(email, first_name, last_name, password, gender, birthday, height, weight, activity, bmr, goal, this.props.navigation)
+    this.props.signupActions.completeSignUp(email, first_name, last_name, password, gender, birthday, height, weight, activity, bmr, goal, this.props.navigation)
     this.setState({
       email: '',
       first_name: '',
@@ -104,21 +104,21 @@ class SignupGoalContainer extends React.Component {
 
   render(){
     return(
-      <SignupGoal
+      <SignUpGoal
         {...this.props}
         bmr={this.state.bmr}
         activity={this.state.activity}
         goal={this.state.goal}
         onChange={this.onChange}
         handleSetGoal={(goal) => this.handleSetGoal(goal)}
-        handleCompleteSignup={this.handleCompleteSignup}
+        handleCompleteSignUp={this.handleCompleteSignUp}
       />
     )
   }
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -127,6 +127,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupGoal = connect(mapStateToProps, mapDispatchToProps)(SignupGoalContainer)
+const ConnectedSignUpGoal = connect(mapStateToProps, mapDispatchToProps)(SignUpGoalContainer)
 
-export { ConnectedSignupGoal as SignupGoal }
+export { ConnectedSignUpGoal as SignUpGoal }

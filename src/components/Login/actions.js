@@ -61,7 +61,7 @@ export const login = (email, password) => async (dispatch) => {
       const user = await db.collection('users')
       .doc(res.user.uid)
       .get()
-
+      console.log('success')
       dispatch(loginSuccess(user.data()))
     }
   } catch (e){

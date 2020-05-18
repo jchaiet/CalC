@@ -1,3 +1,3 @@
-import { SignupWeight } from './SignupWeightContainer'
+import { SignUpWeight } from './SignUpWeightContainer'
 
-export { SignupWeight };
+export { SignUpWeight };

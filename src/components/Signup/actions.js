@@ -3,8 +3,6 @@ import * as c from './constants'
 import Firebase, { db } from '../../../config/Firebase'
 import { NavigationActions } from 'react-navigation';
 
-import { Alert } from 'react-native';
-
 const saveCredentialsStart = () => ({
   type: c.SAVE_CREDENTIALS_START
 })
@@ -43,12 +41,7 @@ export const setEmail = (email, navigation) => async (dispatch) => {
   }
   try {
     dispatch(signupEmailSuccess(email))
-    navigation.navigate(
-      'SigningUpView',
-      {},
-      NavigationActions.navigate({ 
-        routeName: 'SignupPassword' 
-    }))
+    navigation.navigate('SignUp', {screen: 'SignUpPassword'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -74,7 +67,7 @@ export const setPassword = (password, confirm_password, navigation) => async (di
 
   try {
     dispatch(signupPasswordSuccess(password))
-    navigation.navigate({ routeName: 'SignupName' })
+    navigation.navigate('SignUp', {screen: 'SignUpName'})  
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -95,7 +88,7 @@ export const setName = (first_name, last_name, navigation) => async (dispatch) =
   }
   try {
     dispatch(signupNameSuccess(first_name, last_name))
-    navigation.navigate({ routeName: 'SignupGender' })
+    navigation.navigate('SignUp', {screen: 'SignUpGender'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -116,7 +109,7 @@ export const setGender = (gender, navigation) => async (dispatch) => {
   
   try {
     dispatch(signupGenderSuccess(gender))
-    navigation.navigate({ routeName: 'SignupBirthday' })
+    navigation.navigate('SignUp', {screen: 'SignUpBirthday'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -137,7 +130,7 @@ export const setBirthday = (birthday, navigation) => async (dispatch) => {
   
   try {
     dispatch(signupBirthdaySuccess(birthday))
-    navigation.navigate({ routeName: 'SignupHeight' })
+    navigation.navigate('SignUp', {screen: 'SignUpHeight'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -158,7 +151,7 @@ export const setHeight = (height, navigation) => async (dispatch) => {
   
   try {
     dispatch(signupHeightSuccess(height))
-    navigation.navigate({ routeName: 'SignupWeight' })
+    navigation.navigate('SignUp', {screen: 'SignUpWeight'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -179,7 +172,7 @@ export const setWeight = (weight, navigation) => async (dispatch) => {
   
   try {
     dispatch(signupWeightSuccess(weight))
-    navigation.navigate({ routeName: 'SignupActivity' })
+    navigation.navigate('SignUp', {screen: 'SignUpActivity'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -200,7 +193,7 @@ export const setActivity = (activity, navigation) => async (dispatch) => {
 
   try {
     dispatch(signupActivitySuccess(activity))
-    navigation.navigate({ routeName: 'SignupGoal' })
+    navigation.navigate('SignUp', {screen: 'SignUpGoal'})
   } catch (e){
     console.log(e)
     dispatch(signupFail('Error signing up'))
@@ -221,7 +214,7 @@ const signupFail = (error) => ({
   error
 })
 
-export const completeSignup = (email, first_name, last_name, password, gender, birthday, height, weight, activity, bmr, goal, navigation) => async (dispatch) => {
+export const completeSignUp = (email, first_name, last_name, password, gender, birthday, height, weight, activity, bmr, goal, navigation) => async (dispatch) => {
   dispatch(signupStart())
   if(goal.length <= 0){
     dispatch(signupFail('Please select your goal'))
@@ -251,7 +244,8 @@ export const completeSignup = (email, first_name, last_name, password, gender, b
 
       await dispatch(saveCredentials(user.email, password));
       dispatch(signupSuccess(user));
-      navigation.navigate({ routeName: 'SignedIn'})
+
+      navigation.navigate('Home')
     }
   } catch (e){
     console.log(e)

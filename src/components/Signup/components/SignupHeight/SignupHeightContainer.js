@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupHeight from './SignupHeight';
+import SignUpHeight from './SignUpHeight';
 
-class SignupHeightContainer extends React.Component {
+class SignUpHeightContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -62,7 +62,7 @@ class SignupHeightContainer extends React.Component {
 
   render(){
     return(
-      <SignupHeight
+      <SignUpHeight
         {...this.props}
         focusedInput={this.state.focusedInput}
         onChange={this.onChange}
@@ -75,7 +75,7 @@ class SignupHeightContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -84,6 +84,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupHeight = connect(mapStateToProps, mapDispatchToProps)(SignupHeightContainer)
+const ConnectedSignUpHeight = connect(mapStateToProps, mapDispatchToProps)(SignUpHeightContainer)
 
-export { ConnectedSignupHeight as SignupHeight }
+export { ConnectedSignUpHeight as SignUpHeight }

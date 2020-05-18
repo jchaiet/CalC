@@ -1,3 +1,3 @@
-import { SignupPassword } from './SignupPasswordContainer'
+import { SignUpPassword } from './SignUpPasswordContainer'
 
-export { SignupPassword };
+export { SignUpPassword };

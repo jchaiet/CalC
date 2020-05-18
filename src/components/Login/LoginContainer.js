@@ -17,13 +17,6 @@ class LoginContainer extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if(Object.keys(this.props.user).length > 0){
-      this.props.navigation.navigate({ routeName: 'SignedIn'})
-      console.log('signed in')
-    }
-  }
-
   onChange = (name, value) => {
 		this.setState({ [name]: value });
   }
@@ -45,7 +38,7 @@ class LoginContainer extends React.Component {
   }
 
   handleNavToForgotPassword = () => {
-    //this.props.navigation.navigate('Signup')
+    //this.props.navigation.navigate('SignUp')
   }
 
   handleLogin = () => {
@@ -56,6 +49,7 @@ class LoginContainer extends React.Component {
     this.setState({
       password: ''
     })
+    passwordRef.clear()
   }
   
   render(){

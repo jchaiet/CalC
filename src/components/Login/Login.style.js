@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { mainStyles, colors, fonts } from '../../styles/styles'
+import { layout, colors, fonts } from '../../styles/styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderColor: colors.lightGrey,
     backgroundColor: colors.lightGrey,
     textAlign: 'left',
-    fontFamily: fonts.barlowLight
+    fontFamily: fonts.barlowLight,
   },
   inputBoxFocused: {
     width: 325,

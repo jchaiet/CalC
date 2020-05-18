@@ -5,13 +5,13 @@ import { Spinner } from 'native-base'
 import { CButton } from '../shared'
 
 import { styles } from './Login.style';
-import { colors, fonts } from '../../styles/styles'
+import { colors, fonts, text, layout } from '../../styles/styles'
 
 const Login = (props) => {
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? "padding" : "height"} 
-      style={styles.container}
+      style={layout.container}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 110 : 0} 
     >
       <View style={{ flex: 1, justifyContent:'space-between', alignItems: 'center', marginTop: 20 }}>
@@ -56,7 +56,7 @@ const Login = (props) => {
 
         <View style={{ flex: 1, justifyContent:'flex-end', alignItems: 'center' }} >
           { props.loggingIn ? 
-            <Spinner style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end'}} />
+            <Spinner style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end'}} color={colors.blue}/>
           :
             <View style={{ alignItems: 'center' }}>
               <CButton

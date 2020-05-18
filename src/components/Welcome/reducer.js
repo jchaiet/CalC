@@ -11,6 +11,7 @@ const initialState = {
   weight: '',
   activity: '',
   goal: '',
+  user: {},
   signupError: null,
 }
 
@@ -18,6 +19,12 @@ const actionHandlers = {
   [c.SIGNUP_RESET]: (state) => {
     return {
       ...state, ...initialState
+    }
+  },
+  [c.GET_USER]: (state, action) => {
+    return {
+      ...state,
+      user: action.user
     }
   }
 }

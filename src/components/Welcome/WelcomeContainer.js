@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as Keychain from 'react-native-keychain'
-import { NavigationActions, StackActions } from 'react-navigation';
+
 import * as welcomeActions from './actions'
+
+import { isSignedIn } from '../../utils'
 
 import Welcome from './Welcome';
 
@@ -13,15 +14,9 @@ class WelcomeContainer extends React.Component {
     this.state = {}
   }
 
-  componentDidUpdate(prevProps) {
-    if(Object.keys(this.props.user).length > 0){
-      this.props.navigation.navigate({ routeName: 'SignedIn'})
-    }
-  }
-
-  handleNavToSignup = () => {
-    this.props.welcomeActions.reset();
-    this.props.navigation.navigate('SignupStart')
+  handleNavToSignUp = () => {
+    welcomeActions.reset();
+    this.props.navigation.navigate('SignUp', {screen: 'SignUpStart'})
   }
 
   handleNavToLogin = () => {
@@ -29,11 +24,10 @@ class WelcomeContainer extends React.Component {
   }
   
   render(){
-    console.log(this.props)
     return(
       <Welcome 
         {...this.props}
-        handleNavToSignup={this.handleNavToSignup}
+        handleNavToSignUp={this.handleNavToSignUp}
         handleNavToLogin={this.handleNavToLogin}
       />
     )

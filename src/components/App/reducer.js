@@ -1,5 +1,5 @@
 import * as login from '../Login'
-import * as signup from '../Signup'
+import * as signup from '../SignUp'
 
 const initialState = {
   user: {},

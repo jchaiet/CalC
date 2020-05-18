@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupGender from './SignupGender';
+import SignUpGender from './SignUpGender';
 
 const genders = [
   {
@@ -22,7 +22,7 @@ const placeholder = {
   value: null
 }
 
-class SignupGenderContainer extends React.Component {
+class SignUpGenderContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -60,7 +60,7 @@ class SignupGenderContainer extends React.Component {
 
   render(){
     return(
-      <SignupGender
+      <SignUpGender
         {...this.props}
         placeholder={placeholder}
         gender={this.state.gender}
@@ -73,7 +73,7 @@ class SignupGenderContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -82,6 +82,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupGender = connect(mapStateToProps, mapDispatchToProps)(SignupGenderContainer)
+const ConnectedSignUpGender = connect(mapStateToProps, mapDispatchToProps)(SignUpGenderContainer)
 
-export { ConnectedSignupGender as SignupGender }
+export { ConnectedSignUpGender as SignUpGender }

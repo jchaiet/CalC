@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupActivity from './SignupActivity';
+import SignUpActivity from './SignUpActivity';
 
 const activities = [
   {
@@ -34,7 +34,7 @@ const placeholder = {
   value: null
 }
 
-class SignupActivityContainer extends React.Component {
+class SignUpActivityContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -66,7 +66,7 @@ class SignupActivityContainer extends React.Component {
 
   render(){
     return(
-      <SignupActivity
+      <SignUpActivity
         {...this.props}
         placeholder={placeholder}
         activity={this.state.activity}
@@ -79,7 +79,7 @@ class SignupActivityContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -88,6 +88,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupActivity = connect(mapStateToProps, mapDispatchToProps)(SignupActivityContainer)
+const ConnectedSignUpActivity = connect(mapStateToProps, mapDispatchToProps)(SignUpActivityContainer)
 
-export { ConnectedSignupActivity as SignupActivity }
+export { ConnectedSignUpActivity as SignUpActivity }

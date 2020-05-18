@@ -4,20 +4,20 @@ import { SafeAreaView } from 'react-navigation';
 
 import { CButton } from '../../../shared'
 
-import { styles } from '../../Signup.style';
-import { colors, fonts } from '../../../../styles/styles'
+import { styles } from '../../SignUp.style';
+import { colors, fonts, text, layout } from '../../../../styles/styles'
 
-const SignupName = (props) => {
+const SignUpName = (props) => {
   return (
     <KeyboardAvoidingView 
       behavior={Platform.OS === 'ios' ? "padding" : "height"} 
-      style={styles.container}
+      style={layout.container}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 110 : 0} 
     >
       <View style={{ flex: 1, justifyContent:'space-between', alignItems: 'center', marginTop: 20 }}>
 
         <View>
-          <Text style={styles.headerText}>What's your name?</Text>
+          <Text style={text.headerText}>What's your name?</Text>
         </View>
 
         <View style={styles.errorContain}>
@@ -66,4 +66,4 @@ const SignupName = (props) => {
   )
 }
 
-export default SignupName;
+export default SignUpName;

@@ -3,11 +3,11 @@ import { View, TextInput, TouchableOpacity, Text, KeyboardAvoidingView, StyleShe
 
 import { CButton } from '../shared'
 
-import { colors, fonts } from '../../styles/styles'
+import { colors, fonts, layout } from '../../styles/styles'
 
 const Welcome = (props) => {
   return (
-    <View style={styles.container}>
+    <View style={layout.container}>
       <View style={styles.innerContainer}>
         <Text style={styles.titleText}>Welcome to CalC</Text>
         <Text style={styles.bodyText}>Start setting your diet goals</Text>
@@ -15,7 +15,7 @@ const Welcome = (props) => {
 
       <CButton
         text="Sign up"
-        action={props.handleNavToSignup}
+        action={props.handleNavToSignUp}
         color={colors.blue}
       />
 

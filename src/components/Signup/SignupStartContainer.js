@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from './actions'
-import SignupStart from './SignupStart';
+import SignUpStart from './SignUpStart';
 
-class SignupStartContainer extends React.Component {
+class SignUpStartContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -77,7 +77,7 @@ class SignupStartContainer extends React.Component {
 
   render(){
     return(
-      <SignupStart
+      <SignUpStart
         {...this.props}
         isFocused={this.state.isFocused}
         onChange={this.onChange}
@@ -90,7 +90,7 @@ class SignupStartContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -99,6 +99,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupStart = connect(mapStateToProps, mapDispatchToProps)(SignupStartContainer)
+const ConnectedSignUpStart = connect(mapStateToProps, mapDispatchToProps)(SignUpStartContainer)
 
-export { ConnectedSignupStart as SignupStart }
+export { ConnectedSignUpStart as SignUpStart }

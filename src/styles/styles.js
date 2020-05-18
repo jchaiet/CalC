@@ -16,18 +16,32 @@ const colors = {
   green: '#11C93B',
   darkGreen: '#0f8029',
   grey: '#abb0b3',
-  lightGrey: '#e3e9ee',
+  lightGrey: '#F5F5F5',
   darkGrey: '#7c8082',
 }
 
-const mainStyles = {
+const text = {
+  textH3: {
+    fontSize: 28,
+    fontFamily: fonts.barlowBold
+  },
+  textP: {
+    fontSize: 16,
+    fontFamily: fonts.barlowReg
+  },
+  headerText: {
+    fontSize: 21,
+    fontFamily: fonts.barlowMed
+  },
+}
+
+const layout = {
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    display: 'flex',
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
   }
 }
 
-export { mainStyles, colors, fonts };
+export { layout, colors, fonts, text };

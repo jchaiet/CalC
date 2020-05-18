@@ -1,3 +1,3 @@
-import { SignupName } from './SignupNameContainer'
+import { SignUpName } from './SignUpNameContainer'
 
-export { SignupName };
+export { SignUpName };

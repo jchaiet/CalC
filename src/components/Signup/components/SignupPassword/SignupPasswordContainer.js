@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupPassword from './SignupPassword';
+import SignUpPassword from './SignUpPassword';
 
-class SignupPasswordContainer extends React.Component {
+class SignUpPasswordContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -71,7 +71,7 @@ class SignupPasswordContainer extends React.Component {
 
   render(){
     return(
-      <SignupPassword
+      <SignUpPassword
         {...this.props}
         focusedInput={this.state.focusedInput}
         onChange={this.onChange}
@@ -84,7 +84,7 @@ class SignupPasswordContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -93,6 +93,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupPassword = connect(mapStateToProps, mapDispatchToProps)(SignupPasswordContainer)
+const ConnectedSignUpPassword = connect(mapStateToProps, mapDispatchToProps)(SignUpPasswordContainer)
 
-export { ConnectedSignupPassword as SignupPassword }
+export { ConnectedSignUpPassword as SignUpPassword }

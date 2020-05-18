@@ -1,3 +1,3 @@
-import { SignupHeight } from './SignupHeightContainer'
+import { SignUpHeight } from './SignUpHeightContainer'
 
-export { SignupHeight };
+export { SignUpHeight };

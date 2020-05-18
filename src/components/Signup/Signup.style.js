@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { mainStyles, colors, fonts } from '../../styles/styles'
+import { layout, colors, fonts } from '../../styles/styles'
 
 const pickerStyles = StyleSheet.create({
   inputIOS: {
@@ -47,10 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 30,
     width: 370
-  },
-  headerText: {
-    fontSize: 21,
-    fontFamily: fonts.barlowMed
   },
   subText: {
     fontSize: 18,
@@ -184,7 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: fonts.barlowMed
   },
-  buttonSignup: {
+  buttonSignUp: {
     fontSize: 12
   },
   selectedGoalHeading: {

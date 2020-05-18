@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupBirthday from './SignupBirthday';
+import SignUpBirthday from './SignUpBirthday';
 
-class SignupBirthdayContainer extends React.Component {
+class SignUpBirthdayContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -67,7 +67,7 @@ class SignupBirthdayContainer extends React.Component {
 
   render(){
     return(
-      <SignupBirthday
+      <SignUpBirthday
         {...this.props}
         birthday_month={this.state.birthday_month}
         birthday_day={this.state.birthday_day}
@@ -83,7 +83,7 @@ class SignupBirthdayContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -92,6 +92,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupBirthday = connect(mapStateToProps, mapDispatchToProps)(SignupBirthdayContainer)
+const ConnectedSignUpBirthday = connect(mapStateToProps, mapDispatchToProps)(SignUpBirthdayContainer)
 
-export { ConnectedSignupBirthday as SignupBirthday }
+export { ConnectedSignUpBirthday as SignUpBirthday }

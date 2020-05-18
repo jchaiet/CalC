@@ -1,3 +1,3 @@
-import { SignupActivity } from './SignupActivityContainer'
+import { SignUpActivity } from './SignUpActivityContainer'
 
-export { SignupActivity };
+export { SignUpActivity };

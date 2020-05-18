@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { NavigationActions, StackActions } from 'react-navigation';
 
 import * as signupActions from '../../actions'
-import SignupWeight from './SignupWeight';
+import SignUpWeight from './SignUpWeight';
 
-class SignupWeightContainer extends React.Component {
+class SignUpWeightContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
@@ -57,7 +57,7 @@ class SignupWeightContainer extends React.Component {
 
   render(){
     return(
-      <SignupWeight
+      <SignUpWeight
         {...this.props}
         focusedInput={this.state.focusedInput}
         onChange={this.onChange}
@@ -70,7 +70,7 @@ class SignupWeightContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return state.Signup
+  return state.SignUp
 }
 
 const mapDispatchToProps = dispatch => {
@@ -79,6 +79,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedSignupWeight = connect(mapStateToProps, mapDispatchToProps)(SignupWeightContainer)
+const ConnectedSignUpWeight = connect(mapStateToProps, mapDispatchToProps)(SignUpWeightContainer)
 
-export { ConnectedSignupWeight as SignupWeight }
+export { ConnectedSignUpWeight as SignUpWeight }

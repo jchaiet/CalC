@@ -1,3 +1,3 @@
-import { SignupGoal } from './SignupGoalContainer'
+import { SignUpGoal } from './SignUpGoalContainer'
 
-export { SignupGoal };
+export { SignUpGoal };

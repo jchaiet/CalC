@@ -5,14 +5,14 @@ import { AsyncStorage } from 'react-native';
 
 import { reducer as WelcomeReducer } from './components/Welcome'
 import { reducer as LoginReducer } from './components/Login'
-import { reducer as SignupReducer } from './components/Signup'
+import { reducer as SignUpReducer } from './components/SignUp'
 import { reducer as HomeReducer } from './components/Home'
 import { reducer as AppReducer } from './components/App'
 
 const appReducer = combineReducers({
   Welcome: WelcomeReducer,
   Login: LoginReducer,
-  Signup: SignupReducer,
+  SignUp: SignUpReducer,
   Home: HomeReducer,
   App: AppReducer
 })

@@ -4,16 +4,16 @@ import { SafeAreaView } from 'react-navigation';
 
 import { CButton } from '../../../shared'
 
-import { styles } from '../../Signup.style';
-import { colors, fonts } from '../../../../styles/styles'
+import { styles } from '../../SignUp.style';
+import { colors, fonts, text, layout } from '../../../../styles/styles'
 
-const SignupGoal = (props) => {
+const SignUpGoal = (props) => {
   return (
-    <View style={styles.container}>
+    <View style={layout.container}>
       <View style={{ flex: 1, justifyContent:'center', alignItems: 'center', marginTop: 20 }}>
 
         <View>
-          <Text style={styles.headerText}>What's your goal?</Text>
+          <Text style={text.headerText}>What's your goal?</Text>
         </View>
         
         <View style={styles.errorContain}>
@@ -60,7 +60,7 @@ const SignupGoal = (props) => {
       <View>
         <CButton
           text="Start Tracking"
-          action={props.handleCompleteSignup}
+          action={props.handleCompleteSignUp}
           color={colors.green}
         />
       </View>
@@ -68,4 +68,4 @@ const SignupGoal = (props) => {
   )
 }
 
-export default SignupGoal;
+export default SignUpGoal;

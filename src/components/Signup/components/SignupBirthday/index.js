@@ -1,3 +1,3 @@
-import { SignupBirthday } from './SignupBirthdayContainer'
+import { SignUpBirthday } from './SignUpBirthdayContainer'
 
-export { SignupBirthday };
+export { SignUpBirthday };

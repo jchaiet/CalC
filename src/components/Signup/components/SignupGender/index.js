@@ -1,3 +1,3 @@
-import { SignupGender } from './SignupGenderContainer'
+import { SignUpGender } from './SignUpGenderContainer'
 
-export { SignupGender };
+export { SignUpGender };
